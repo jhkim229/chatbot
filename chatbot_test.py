@@ -1,7 +1,9 @@
 import asyncio
 from chatbot import Chat, register_call
 import os
+import wikipedia
 import python_weather
+
 
 import warnings
 warnings.filterwarnings("ignore")
@@ -31,6 +33,15 @@ async def get_weather(city='New York'):
     weather_string = ""
     for hourly in list(weather.daily_forecasts)[0].hourly_forecasts:
         weather_string = weather_string + str(hourly.time) + " " + str(hourly.temperature) + " deg.C " + str(hourly.description) + "\n"
+
+@register_call("wiki")
+def who_is(session=None, query='South Korea'):
+    try:
+        return wikipedia.summary(query)
+    except Exception:
+        pass
+    return "I don't know about "+query
+
 
 first_question = "Hi, how are you?"
 chat = Chat(os.path.join(os.path.dirname(os.path.abspath(__file__)), "chatbot_test.template"))
