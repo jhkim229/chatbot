@@ -1,4 +1,9 @@
 {% block %}
+    {% client %}(how is the weather in|weather in) (?P<city>.*){% endclient %}
+    {% response %}{% call weather: %city %}{% endresponse %}
+{% endblock %}
+
+{% block %}
     {% client %}(Do you know|Do you have any idea) (?P<query>.*){% endclient %}
     {% response %}{% call do_you_know: %query %}{% endresponse %}
 {% endblock %}
