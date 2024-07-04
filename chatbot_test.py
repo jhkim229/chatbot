@@ -5,12 +5,12 @@ import warnings
 warnings.filterwarnings("ignore")
 
 
-@register_call("wiki")
+@register_call("do_you_know")
 def do_you_know(session=None, query=None):
     return "I do not know about " + query
 
 
-
+@register_call("wiki")
 def who_is(session=None, query='South Korea'):
     try:
         return wikipedia.summary(query)
