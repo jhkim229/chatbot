@@ -1,6 +1,5 @@
 from chatbot import Chat, register_call
 import os
-import wikipedia
 
 import warnings
 warnings.filterwarnings("ignore")
