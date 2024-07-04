@@ -1,13 +1,23 @@
 from chatbot import Chat, register_call
 import os
+import wikipedia
 
 import warnings
 warnings.filterwarnings("ignore")
 
 
-@register_call("do_you_know")
+@register_call("wiki")
 def do_you_know(session=None, query=None):
     return "I do not know about " + query
+
+
+
+def who_is(session=None, query='South Korea'):
+    try:
+        return wikipedia.summary(query)
+    except Exception:
+        pass
+    return "I don't know about "+query
 
 
 first_question = "Hi, how are you?"
